@@ -27,10 +27,12 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/mongoose": "^10.0.10",
     "@nestjs/platform-express": "^10.0.0",
+    "@willsoto/nestjs-prometheus": "^5.0.0",
     "mongoose": "^8.7.0",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
-    "@willsoto/nestjs-prometheus": "^5.0.0"
+    "winston": "^3.14.2",
+    "winston-loki": "^6.1.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
@@ -40,6 +42,7 @@
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
     "@types/supertest": "^6.0.0",
+    "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "eslint": "^8.42.0",
