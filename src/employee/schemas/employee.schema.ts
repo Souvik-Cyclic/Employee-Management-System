@@ -5,13 +5,13 @@ export type EmployeeDocument = Employee & Document;
 
 @Schema()
 export class Employee {
-  @Prop({ required: true })
+  @Prop({ type: String, required: true })
   name: string;
 
-  @Prop()
+  @Prop({ type: String })
   position: string;
 
-  @Prop()
+  @Prop({ type: Number})
   salary: number;
 }
 
