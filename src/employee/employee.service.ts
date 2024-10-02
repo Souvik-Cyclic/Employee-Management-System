@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Employee, EmployeeDocument } from './schemas/employee.schema';
 import { LoggingService } from 'src/logging/logging.service';
+import { MetricsService } from 'src/metrics/metrics.service';
 
 @Injectable()
 export class EmployeeService {
@@ -10,6 +11,7 @@ export class EmployeeService {
     @InjectModel(Employee.name)
     private employeeModel: Model<EmployeeDocument>,
     private readonly logger: LoggingService,
+    private readonly metricsService: MetricsService,
   ) {}
 
   async create(createEmployeeDto: any): Promise<Employee> {
@@ -18,9 +20,11 @@ export class EmployeeService {
     try {
       const result = await createdEmployee.save();
       this.logger.log(`Employee created with ID: ${result.id}`, 'EmployeeService');
+      this.metricsService.incrementRequestCount();
       return result;
     } catch (error) {
       this.logger.error('Error creating employee', error.stack, 'EmployeeService');
+      this.metricsService.incrementErrorCount();
       throw error;
     }
   }
@@ -30,9 +34,11 @@ export class EmployeeService {
     try {
       const employees = await this.employeeModel.find().exec();
       this.logger.log(`Fetched ${employees.length} employees`, 'EmployeeService');
+      this.metricsService.incrementRequestCount();
       return employees;
     } catch (error) {
       this.logger.error('Error fetching employees', error.stack, 'EmployeeService');
+      this.metricsService.incrementErrorCount();
       throw error;
     }
   }
@@ -46,9 +52,11 @@ export class EmployeeService {
       } else {
         this.logger.warn(`Employee not found with ID: ${id}`, 'EmployeeService');
       }
+      this.metricsService.incrementRequestCount();
       return employee;
     } catch (error) {
       this.logger.error(`Error fetching employee with ID: ${id}`, error.stack, 'EmployeeService');
+      this.metricsService.incrementErrorCount();
       throw error;
     }
   }
@@ -64,9 +72,11 @@ export class EmployeeService {
       } else {
         this.logger.warn(`Employee not found for update with ID: ${id}`, 'EmployeeService');
       }
+      this.metricsService.incrementRequestCount();
       return updatedEmployee;
     } catch (error) {
       this.logger.error(`Error updating employee with ID: ${id}`, error.stack, 'EmployeeService');
+      this.metricsService.incrementErrorCount();
       throw error;
     }
   }
@@ -80,9 +90,11 @@ export class EmployeeService {
       } else {
         this.logger.warn(`Employee not found for deletion with ID: ${id}`, 'EmployeeService');
       }
+      this.metricsService.incrementRequestCount();
       return result;
     } catch (error) {
       this.logger.error(`Error deleting employee with ID: ${id}`, error.stack, 'EmployeeService');
+      this.metricsService.incrementErrorCount();
       throw error;
     }
   }

@@ -31,10 +31,13 @@ importers:
         version: 10.4.4(@nestjs/common@10.4.4(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.4)
       '@willsoto/nestjs-prometheus':
         specifier: ^5.0.0
-        version: 5.5.1(@nestjs/common@10.4.4(reflect-metadata@0.2.2)(rxjs@7.8.1))(prom-client@14.2.0)
+        version: 5.5.1(@nestjs/common@10.4.4(reflect-metadata@0.2.2)(rxjs@7.8.1))(prom-client@14.0.0)
       mongoose:
         specifier: ^8.7.0
         version: 8.7.0(snappy@7.2.2)
+      prom-client:
+        specifier: ^14.0.0
+        version: 14.0.0
       reflect-metadata:
         specifier: ^0.2.0
         version: 0.2.2
@@ -2484,8 +2487,8 @@ packages:
     resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
     engines: {node: '>= 0.6.0'}
 
-  prom-client@14.2.0:
-    resolution: {integrity: sha512-sF308EhTenb/pDRPakm+WgiN+VdM/T1RaHj1x+MvAuT8UiQP8JmOEbxVqtkbfR4LrvOg5n7ic01kRBDGXjYikA==}
+  prom-client@14.0.0:
+    resolution: {integrity: sha512-etPa4SMO4j6qTn2uaSZy7+uahGK0kXUZwO7WhoDpTf3yZ837I3jqUDYmG6N0caxuU6cyqrg0xmOxh+yneczvyA==}
     engines: {node: '>=10'}
 
   prompts@2.4.2:
@@ -4127,10 +4130,10 @@ snapshots:
       '@webassemblyjs/ast': 1.12.1
       '@xtuc/long': 4.2.2
 
-  '@willsoto/nestjs-prometheus@5.5.1(@nestjs/common@10.4.4(reflect-metadata@0.2.2)(rxjs@7.8.1))(prom-client@14.2.0)':
+  '@willsoto/nestjs-prometheus@5.5.1(@nestjs/common@10.4.4(reflect-metadata@0.2.2)(rxjs@7.8.1))(prom-client@14.0.0)':
     dependencies:
       '@nestjs/common': 10.4.4(reflect-metadata@0.2.2)(rxjs@7.8.1)
-      prom-client: 14.2.0
+      prom-client: 14.0.0
 
   '@xtuc/ieee754@1.2.0': {}
 
@@ -5873,7 +5876,7 @@ snapshots:
 
   process@0.11.10: {}
 
-  prom-client@14.2.0:
+  prom-client@14.0.0:
     dependencies:
       tdigest: 0.1.2
 
